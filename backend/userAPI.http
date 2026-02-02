@@ -1,0 +1,110 @@
+### Authentication Tests
+
+### 1. Đăng ký tài khoản mới
+POST http://localhost:3001/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "New User",
+  "email": "newuser@example.com",
+  "password": "password123"
+}
+
+###
+
+### 2. Đăng nhập
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "newuser@example.com",
+  "password": "password123"
+}
+
+###
+
+### 3. Lấy thông tin bản thân (Me) - Cần token
+GET http://localhost:3001/api/auth/me
+Authorization: Bearer YOUR_TOKEN_HERE
+
+###
+
+### User CRUD Tests
+
+### 4. Lấy tất cả users
+GET http://localhost:3001/api/users
+
+###
+
+### 5. Lấy user theo ID
+GET http://localhost:3001/api/users/USER_ID_HERE
+
+###
+
+### 6. Tạo user mới
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "password123",
+  "age": 25
+}
+
+###
+
+### 7. Cập nhật user
+PUT http://localhost:3001/api/users/USER_ID_HERE
+Content-Type: application/json
+
+{
+  "name": "John Doe Updated",
+  "age": 26
+}
+
+###
+
+### 8. Xóa user
+DELETE http://localhost:3001/api/users/USER_ID_HERE
+
+###
+
+### Project Tests (Relationship Demo)
+
+### 9. Tạo project mới
+POST http://localhost:3001/api/projects
+Content-Type: application/json
+
+{
+  "name": "Test Project",
+  "description": "Testing user-project relationship",
+  "status": "pending",
+  "owner": "USER_ID_HERE"
+}
+
+###
+
+### 10. Lấy tất cả projects (với populate owner)
+GET http://localhost:3001/api/projects
+
+###
+
+### 11. Lấy project theo ID
+GET http://localhost:3001/api/projects/PROJECT_ID_HERE
+
+###
+
+### 12. Cập nhật project
+PUT http://localhost:3001/api/projects/PROJECT_ID_HERE
+Content-Type: application/json
+
+{
+  "status": "in-progress",
+  "description": "Updated description"
+}
+
+###
+
+### 13. Xóa project
+DELETE http://localhost:3001/api/projects/PROJECT_ID_HERE
